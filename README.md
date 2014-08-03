@@ -10,11 +10,11 @@ Today I decided to take things a step further. The screen I see most often on my
 
 ## Installation
 
-Clone this repository to your local machine. Example:
+Use git to clone this repository to your local machine. Example:
 
 ```bash
 $ cd ~/Sites
-$ clone https://github.com/jonmagic/focus-on-this.git
+$ git clone https://github.com/jonmagic/focus-on-this.git
 ```
 
 Now create a symlink to the `focus` executable in a directory that is a part of your path.
