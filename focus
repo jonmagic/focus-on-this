@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+symlink_path = File.dirname(__FILE__) + "/focus"
+focus_path   = File.readlink(symlink_path)
+this_path    = File.dirname(focus_path) + "/this.html"
+output = []
+write  = ARGV.shift == "on" && ARGV.length > 0
+this   = ARGV.join(" ")
+
+File.open(this_path, "r") do |file|
+  file.each_line do |line|
+    match = line.match /\<h1\>(.+)\<\/h1\>$/
+
+    if write
+      if match
+        output << "      <h1>#{this}</h1>\n"
+      else
+        output << line
+      end
+    elsif match
+      puts "Focus On #{match[1]}"
+    end
+  end
+end
+
+File.open(this_path, "w") do |file|
+  file.write output.join
+end if write
