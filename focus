@@ -3,6 +3,7 @@
 symlink_path = File.dirname(__FILE__) + "/focus"
 focus_path   = File.readlink(symlink_path)
 this_path    = File.dirname(focus_path) + "/this.html"
+log_path     = File.dirname(focus_path) + "/log.csv"
 output = []
 write  = ARGV.shift == "on" && ARGV.length > 0
 this   = ARGV.join(" ")
@@ -25,4 +26,8 @@ end
 
 File.open(this_path, "w") do |file|
   file.write output.join
+end if write
+
+File.open(log_path, "a") do |file|
+  file.puts Time.now.strftime "#{this},%F %H:%M:%S,%z"
 end if write
