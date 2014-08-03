@@ -29,5 +29,5 @@ File.open(this_path, "w") do |file|
 end if write
 
 File.open(log_path, "a") do |file|
-  file.puts Time.now.strftime "#{this},%F %H:%M:%S,%z"
+  file.puts Time.now.strftime "%s,#{this}"
 end if write
